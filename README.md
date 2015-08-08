@@ -16,3 +16,12 @@ We are working on establishing an updated problem statement that reflects the cu
 
 #### Interested in contributing?
 Please see our [Road Map](https://github.com/UMKC-Law/Parcel-Assessment-Tool/wiki/Road-Map) and check the ideas for ways that you can contribute!
+
+#### Setup on a local machine for testing
+_better instructions coming soon_
+
+1. checkout this branch on your local computer
+2. make sure you have python and pip installed
+3. run `pip install -r REQUIREMENTS.txt` in the command line from the project's root directory
+4. After pip sets up the requirements: run `python app.py` from the projeoct's root directory
+5. open your browser and type `localhost:5000` in the address bar
