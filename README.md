@@ -21,7 +21,12 @@ Please see our [Road Map](https://github.com/UMKC-Law/Parcel-Assessment-Tool/wik
 _better instructions coming soon_
 
 1. checkout this branch on your local computer
-2. make sure you have python and pip installed
-3. run `pip install -r REQUIREMENTS.txt` in the command line from the project's root directory
-4. After pip sets up the requirements: run `python app.py` from the projeoct's root directory
-5. open your browser and type `localhost:5000` in the address bar
+2. If you don't already have python and pip install them
+3. if you haven't previously installed virtualenv: run `pip install virtualenv` (you might need to be a super user)
+4. run `virtualenv env` in the root directory of the branch
+5. run `. env/bin/activate` in linux/osx/unix or `env\scripts\activate` in windows
+6. run `pip install -r REQUIREMENTS.txt` in the command line from the branch's root directory
+7. After pip sets up the requirements: run `python app.py` from the branch's root directory
+8. open your browser and type `localhost:5000` in the address bar
+
+!DO NOT PUSH THE VIRTUAL ENVIRONMENT TO GITHUB!
