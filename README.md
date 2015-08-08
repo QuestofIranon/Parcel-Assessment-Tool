@@ -17,16 +17,16 @@ We are working on establishing an updated problem statement that reflects the cu
 #### Interested in contributing?
 Please see our [Road Map](https://github.com/UMKC-Law/Parcel-Assessment-Tool/wiki/Road-Map) and check the ideas for ways that you can contribute!
 
-#### Setup on a local machine for testing
+#### Setup on a local machine for testing and development
 _better instructions coming soon_
 
 1. checkout this branch on your local computer
-2. If you don't already have python and pip install them
+2. If you don't already have python and pip install them, make sure you have a python2.7 interpretter located somewhere on your system
 3. if you haven't previously installed virtualenv: run `pip install virtualenv` (you might need to be a super user)
-4. run `virtualenv env` in the root directory of the branch
+4. run `virtualenv -p /path/to/python2.7.exe env` in the root directory of the branch (in Windows your path will likely be C:\\python27\\python.exe)
 5. run `. env/bin/activate` in linux/osx/unix or `env\scripts\activate` in windows
 6. run `pip install -r REQUIREMENTS.txt` in the command line from the branch's root directory
-7. After pip sets up the requirements: run `python app.py` from the branch's root directory
+7. After pip installs the requirements: run `python app.py` from the branch's root directory
 8. open your browser and type `localhost:5000` in the address bar
 
 !DO NOT PUSH THE VIRTUAL ENVIRONMENT TO GITHUB!
