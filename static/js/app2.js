@@ -187,8 +187,7 @@ function attachMapLayers(map){
 
 function initMap(useGMaps){
 	$('#mainclass').html("<div id='map'></div>");
-	//map = useGMaps ? createGoogleMap() : createLeafletMap();
-	map = createLeafletMap();
+	map = useGMaps ? createGoogleMap() : createLeafletMap();
     attachMapLayers(map)
 }
 
@@ -378,7 +377,7 @@ jQuery(document).ready(function ($) {
 	$('#openModal').modal();
 
 	initPanel();
-	initMap(false);
+	initMap(true);
 
 
 	$('.btn-toggle#maptoggle').click(function(){
