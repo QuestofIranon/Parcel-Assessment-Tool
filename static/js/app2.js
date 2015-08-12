@@ -39,10 +39,18 @@ function initAutocomplete(map) {
 		minLength: 2,
 		select: function( event, ui ) {
 			console.log("Selected: " + ui.item.value);
+            $.get("search/" + ui.item.value, function(data){
+                console.log(data); 
+                return;
+            });
+
+            /*
             sql.execute("SELECT ST_X(ST_Centroid(the_geom)) as X, ST_Y(ST_Centroid(the_geom)) as Y \
                 FROM codeforkansascity.kcmo_parcels_6_18_2015_kiva_nbrhd \
                 WHERE address LIKE '" + ui.item.value + "%'").done(function(data){
                 map.panTo({lon: data.rows[0].x, lat: data.rows[0].y});
+
+                console.print($.post("/search/" + ui.item.value, function(){ return; }));
 
                 var geomQuery = "WITH query_geom \
                         AS (SELECT the_geom AS geom \
@@ -56,7 +64,7 @@ function initAutocomplete(map) {
 
             });           
 			
-
+            */
 
 
             //var bounds = new google.maps.LatLngBounds();
@@ -85,36 +93,6 @@ function createGoogleMap(){
 
     return map;
 }
-
-
-function createLeafletMap(){
-	var map;
-
-	var options = {
-	    center: [39.082981, -94.557747],
-	    zoom: 15,
-	    zoomControl: false,  // dont add the zoom overlay (it is added by default)
-	    loaderControl: false, //dont show tiles loader
-	    query: 'SELECT * FROM data'
-
-	};
-
-    map = new L.Map('map', options);
-
-	L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-	    attribution: 'Positron'
-	}).addTo(map);
-
-	new L.Control.Zoom({position: 'bottomright'}).addTo(map);
-    
-	return map;
-}
-
-function GoToQuery(data){
-
-}
-
-var geomLayer;
 
 function attachMapLayers(map){
 
@@ -187,8 +165,8 @@ function attachMapLayers(map){
 
 function initMap(useGMaps){
 	$('#mainclass').html("<div id='map'></div>");
-	map = useGMaps ? createGoogleMap() : createLeafletMap();
-    attachMapLayers(map)
+	map = createGoogleMap();
+    attachMapLayers(map);
 }
 
 var ParcelArea;

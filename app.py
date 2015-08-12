@@ -5,7 +5,7 @@ import json
 app = Flask(__name__)
 
 @app.route('/')
-def show_map():
+def index():
 	return render_template('index.html')
 
 @app.route('/search/<address>', methods=['GET'])
