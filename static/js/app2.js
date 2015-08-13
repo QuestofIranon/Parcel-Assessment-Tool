@@ -166,7 +166,8 @@ function attachMapLayers(map){
 function initMap(useGMaps){
 	$('#mainclass').html("<div id='map'></div>");
 	map = createGoogleMap();
-    attachMapLayers(map);
+    map.data.loadGeoJson("map_data.geojson")
+    //attachMapLayers(map);
 }
 
 var ParcelArea;
