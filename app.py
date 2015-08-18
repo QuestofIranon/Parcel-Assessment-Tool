@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_file
 from cartodb import CartoDBAPIKey, CartoDBException
 import os
 import json
@@ -17,14 +17,16 @@ def index():
 	return render_template('index.html')
 
 #returns the parcel geometry and zone data for every parcel as json
-@app.route('/map_data.geojson', methods=['GET'])
+@app.route('/map_data.json', methods=['GET'])
 def map():
-	carto = CreateCartoSession()
+	#carto = CreateCartoSession()
 
-	query = ("SELECT  cartodb_id, the_geom, the_geom_webmercator "
-		"FROM codeforkansascity.kcmo_parcels_6_18_2015_kiva_nbrhd")
+	#query = ("SELECT  cartodb_id, the_geom, the_geom_webmercator "
+		#"FROM codeforkansascity.kcmo_parcels_6_18_2015_kiva_nbrhd")
 
-	return carto.sql(query, False, True, 'geojson')
+	#return carto.sql(query, False, True, 'geojson')
+
+	return send_file('data/mapdatatopo.json')
 
 #returns the geometry for the address and immediate surrounding parcels as json
 @app.route('/search/<address>.geojson', methods=['GET'])

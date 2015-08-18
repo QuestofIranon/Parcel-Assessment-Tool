@@ -166,7 +166,11 @@ function attachMapLayers(map){
 function initMap(useGMaps){
 	$('#mainclass').html("<div id='map'></div>");
 	map = createGoogleMap();
-    map.data.loadGeoJson("map_data.geojson")
+    $.getJSON("map_data.json", function(data){
+        geoJsonObject = topojson.feature(data, data.objects.map_data);
+        map.data.addGeoJson(geoJsonObject);
+    });
+    //map.data.loadGeoJson("map_data.json")
     //attachMapLayers(map);
 }
 
