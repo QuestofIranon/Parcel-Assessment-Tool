@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, send_file
 from cartodb import CartoDBAPIKey, CartoDBException
 import psycopg2
+import ppygis
 import os
 import json
 app = Flask(__name__)
@@ -33,9 +34,12 @@ def map():
 
 	cursor = conn.cursor()
 
-	cursor.execute("SELECT Address, apn FROM Parcel_Info.Parcels")
+	cursor.execute("SELECT ST_AsGeoJSON(gid, kivapin, apn, address, geom) FROM Parcel_Info.Parcels")
 
-	print cursor.fetchall()
+	for row in cursor:
+		for x in row:
+			print (x),
+		print ""
 
 	return "check the terminal!"
 
