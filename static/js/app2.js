@@ -110,6 +110,8 @@ function attachMapLayers(map){
     	cartodb.log.log("Error");
     });
 
+
+    /*
     cartodb.createLayer(map, datalayer).addTo(map, 1).on('done', function (layer) {
         var sublayer = layer.getSubLayer(1); //sublayer generated from the data.json file
         sublayer.infowindow.set('template', $('#infowindow_template').html());
@@ -160,18 +162,15 @@ function attachMapLayers(map){
     }).on('error', function () {
         console.log("Error");
     });
+    */
 }
 
 
 function initMap(useGMaps){
 	$('#mainclass').html("<div id='map'></div>");
 	map = createGoogleMap();
-    $.getJSON("map_data.json", function(data){
-        geoJsonObject = topojson.feature(data, data.objects.map_data);
-        map.data.addGeoJson(geoJsonObject);
-    });
-    //map.data.loadGeoJson("map_data.json")
-    //attachMapLayers(map);
+
+    attachMapLayers(map);
 }
 
 var ParcelArea;

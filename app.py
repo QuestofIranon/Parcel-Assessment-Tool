@@ -1,8 +1,11 @@
 from flask import Flask, render_template, request, send_file
 from cartodb import CartoDBAPIKey, CartoDBException
+import psycopg2
 import os
 import json
 app = Flask(__name__)
+
+conn_string = "host='localhost' dbname='ParcelAssessmentTool' user=" + os.environ["DBUSER"] + " password=" + os.environ["DBPASSWORD"]
 
 #generates a session with cartodb
 def CreateCartoSession():
@@ -26,7 +29,15 @@ def map():
 
 	#return carto.sql(query, False, True, 'geojson')
 
-	return send_file('data/mapdatatopo.json')
+	conn = psycopg2.connect(conn_string)
+
+	cursor = conn.cursor()
+
+	cursor.execute("SELECT Address, apn FROM Parcel_Info.Parcels")
+
+	print cursor.fetchall()
+
+	return "check the terminal!"
 
 #returns the geometry for the address and immediate surrounding parcels as json
 @app.route('/search/<address>.geojson', methods=['GET'])
