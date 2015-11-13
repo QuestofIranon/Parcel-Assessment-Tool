@@ -182,22 +182,15 @@ function attachMapLayers(map){
                 };
                 request.send();
 
-                //create a pop up infowindow at the point of click over the parcel
-                $('#addtofolder').off('click'); 
-                position = new google.maps.LatLng(latlng[0], latlng[1], false);
-                infoWindow.setContent("<button type='button' " +
-                                      "class='btn btn-primary'" + 
-                                      "id='addtofolder'>Add to Folder</button>");
-                infoWindow.setPosition(position);
-                infoWindow.open(map);
 
                 //add parcel to the envelope
                 $('#addtofolder').on('click', function () {
                     addParcel(data);
 
-                    //currently opening with this command breaks the sidebar
-                    //for some reason; looking for a work around or fix;
-                    //$('#sidebar').sidebar().open('home');
+                    //if the sidebar is not open, open it!
+                    if($('#sidebar').hasClass('collapsed')){
+                        $('#infobutton').trigger('click');
+                    }
                 });
             }
         });
