@@ -181,10 +181,7 @@ function attachMapLayers(map){
 
                 };
                 request.send();
-
-
-                //add parcel to the envelope
-                $('#addtofolder').on('click', function () {
+                request.addEventListener("load", function(){
                     addParcel(data);
 
                     //if the sidebar is not open, open it!
@@ -193,6 +190,8 @@ function attachMapLayers(map){
                     }
                 });
             }
+
+
         });
 
         //render the search box
